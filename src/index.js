@@ -1,1 +1,66 @@
-import './sass/main.scss';
+const colors = [
+    '#FFFFFF',
+    '#2196F3',
+    '#4CAF50',
+    '#FF9800',
+    '#009688',
+    '#795548',
+  ];
+
+const refs = {
+    body: document.querySelector('body'),
+    btnStart: document.querySelector('button[data-action="start"]'),
+    btnStop: document.querySelector('button[data-action="stop"]'),
+  };
+
+
+
+const TIMER_DELAY=1000;
+let timerId = null;
+
+
+//   Функция для генерации случайного числа
+  const randomIntegerFromInterval = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
+  
+// Слушатель события по кнопке Start
+  refs.btnStart.addEventListener('click', clickOnButtonStart);
+
+// Слушатель события по кнопке Stop  
+refs.btnStop.addEventListener('click',clickOnButtonStop);
+
+
+// Функция для клика по кнопке Start 
+function clickOnButtonStart () {
+    timerId=setInterval(changeBodyColor,TIMER_DELAY);
+    statusBtnStart();
+}
+
+// Функция для смены цвета
+  function changeBodyColor() {
+    const randomColor = randomIntegerFromInterval(0,colors.length-1);
+     refs.body.style.backgroundColor = colors[randomColor];
+  }
+
+// Функция для клика по кнопке Stop 
+function clickOnButtonStop () {
+    clearInterval(timerId);
+    refs.btnStart.removeAttribute('disabled');
+} 
+
+//Проверка включена ли кнопка Start
+function statusBtnStart (){
+    refs.btnStart.setAttribute('disabled', false);
+
+}
+
+
+
+
+
+
+
+
+
+

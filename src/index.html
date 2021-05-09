@@ -10,12 +10,13 @@
       integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
-    <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
-    <include src="./partials/example.html"></include>
-
-    <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
+  <body">
+    <div class=page>
+      <button class='button color-blue' type="button" data-action="start">Start</button>
+      <button class='button color-red' type="button" data-action="stop">Stop</button>
+    </div>
     <script src="./index.js"></script>
   </body>
 </html>
