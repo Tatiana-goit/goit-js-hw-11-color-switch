@@ -46,7 +46,6 @@ function clickOnButtonStart () {
 // Функция для клика по кнопке Stop 
 function clickOnButtonStop () {
     clearInterval(intervalId);
-    document.body.style.backgroundColor = black;
     refs.btnStart.disabled = false; 
     refs.btnStop.disabled = true; 
 } 
