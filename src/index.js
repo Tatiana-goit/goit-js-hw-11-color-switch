@@ -13,51 +13,43 @@ const refs = {
     btnStop: document.querySelector('button[data-action="stop"]'),
   };
 
-
-
+refs.btnStop.disabled=true;
 const TIMER_DELAY=1000;
 let timerId = null;
+let intervalId = '';
 
 
-//   Функция для генерации случайного числа
-  const randomIntegerFromInterval = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  };
-  
 // Слушатель события по кнопке Start
-  refs.btnStart.addEventListener('click', clickOnButtonStart);
+refs.btnStart.addEventListener('click', clickOnButtonStart);
 
 // Слушатель события по кнопке Stop  
 refs.btnStop.addEventListener('click',clickOnButtonStop);
 
+// Функция для смены цвета
+function changeBodyColor() {
+  const randomColor = randomIntegerFromInterval(0,colors.length-1);
+   refs.body.style.backgroundColor = colors[randomColor];
+}
+
+// Функция для генерации случайного числа
+const randomIntegerFromInterval = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
 
 // Функция для клика по кнопке Start 
 function clickOnButtonStart () {
-    timerId=setInterval(changeBodyColor,TIMER_DELAY);
-    statusBtnStart();
+  refs.btnStart.disabled = true; 
+  refs.btnStop.disabled = false;
+  intervalId=setInterval(changeBodyColor,TIMER_DELAY);
 }
-
-// Функция для смены цвета
-  function changeBodyColor() {
-    const randomColor = randomIntegerFromInterval(0,colors.length-1);
-     refs.body.style.backgroundColor = colors[randomColor];
-  }
 
 // Функция для клика по кнопке Stop 
 function clickOnButtonStop () {
-    clearInterval(timerId);
-    refs.btnStart.removeAttribute('disabled');
+    clearInterval(intervalId);
+    document.body.style.backgroundColor = black;
+    refs.btnStart.disabled = false; 
+    refs.btnStop.disabled = true; 
 } 
-
-//Проверка включена ли кнопка Start
-function statusBtnStart (){
-    refs.btnStart.setAttribute('disabled', false);
-
-}
-
-
-
-
 
 
 
