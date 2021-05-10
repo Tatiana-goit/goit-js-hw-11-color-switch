@@ -9,10 +9,14 @@
     height: 50px;
     font-size: 15px;
     font-weight: 700;
-    margin-right: 30px;
+    
     border: none;
     border-radius: 50px;
     color: #fff;
+
+    /* &:not(:last-child) {
+        margin-right: 30px;
+    } */
 }
 
 .color-blue {
@@ -27,7 +31,7 @@
     cursor: not-allowed;
 }
 
-.button:hover,
-.button:focus{
+.button:hover {
+    font-weight: 900;
     box-shadow: 0 4px 15px 0 rgba(70, 73, 77, 0.75);
 }
